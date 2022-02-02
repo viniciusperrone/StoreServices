@@ -17,7 +17,15 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import include
 
+from django.conf.urls.static import static
+from django.conf import settings
+
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^', include('user.urls'))
-]
+    path('token/', TokenObtainPairView.as_view()),
+    path('token/refresh/', TokenRefreshView.as_view()),
+    path(r'^', include('user.urls')),
+    re_path(r'^', include('products.urls'))
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
