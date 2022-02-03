@@ -18,7 +18,7 @@ def UserRegister(request):
         user_serializer = UserSerializer(data=user_data)
         if user_serializer.is_valid():
             if User.objects.filter(email=user_data['email']).exists():
-                return JsonResponse("Email Already Exist", safe=False).status_code(204)
+                return JsonResponse("Email Already Exist", safe=False)
             user_serializer.save()
             return JsonResponse(user_data, safe=False)
         return JsonResponse("Failed to Add", safe=False)

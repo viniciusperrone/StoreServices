@@ -1,8 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
 from uuid import uuid4
-
+from django.conf import settings
 # Create your models here.
+User = settings.AUTH_USER_MODEL
 
 def imageUpload(instance, filename):
     return f"{instance.id}-{filename}"
