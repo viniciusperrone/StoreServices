@@ -1,8 +1,11 @@
 from django.urls import path, re_path
 from django.urls.resolvers import URLPattern
-from user import views
+from user.views import UserView
+
+userView = UserView
 
 
 urlpatterns = [
-    path('signup', views.UserRegister),
+    path('signup', userView.create),
+    path('signin', userView.login),
 ]

@@ -20,12 +20,8 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('token', TokenObtainPairView.as_view()),
-    path('token/refresh/', TokenRefreshView.as_view()),
     re_path(r'^', include('user.urls')),
     re_path(r'^', include('products.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
