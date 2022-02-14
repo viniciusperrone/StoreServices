@@ -1,4 +1,5 @@
 from rest_framework.views import APIView
+from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
@@ -40,10 +41,7 @@ class UserView(APIView):
                 'iat': datetime.datetime.utcnow()
             }
 
-
             token = jwt.encode(payload, 'secret', algorithm='HS256')
-
-            print(token)
 
             response = {
                 'token': token,

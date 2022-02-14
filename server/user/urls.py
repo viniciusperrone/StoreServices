@@ -4,7 +4,6 @@ from user.views import UserView
 
 userView = UserView
 
-
 urlpatterns = [
     path('signup', userView.create),
     path('signin', userView.login),
